@@ -6,7 +6,7 @@ st.subheader(
 )
 
 option = st.selectbox(
-    "How would you like to be contacted?",
-    ("Email", "Home phone", "Mobile phone"))
+    "Choose a country please: ",
+    (https://api.airvisual.com/v2/countries?key=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))
 
 st.write(option, "chosen." )
