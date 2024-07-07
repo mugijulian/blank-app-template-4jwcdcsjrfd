@@ -10,20 +10,18 @@ def fetch_countries():
 
 def main():
 
-st.title("Julian's Weather and Air Quality Application")
-st.subheader(
+    st.title("Julian's Weather and Air Quality Application")
+    st.subheader(
     "Using Streamlit & AirVisual API"
-)
+    )
 
-countries = fetch_countries()
+    countries = fetch_countries()
 
-option = st.selectbox(
-    "Choose a country: ",
-    countries;
-    index = None,
-    placeholder = "Select country..",
-)
-    
-    
+    option = st.selectbox(
+        "Choose a country: ",
+        countries;
+        index = None,
+        placeholder = "Select country..",
+    )
 
-st.write(option, "chosen." )
+    st.write(option, "chosen." )
