@@ -1,6 +1,6 @@
 import streamlit as st
 
 st.title("Julian's Weather and Air Quality Application")
-st.write(
+st.subheader(
     "Using Streamlit & AirVisual API"
 )
