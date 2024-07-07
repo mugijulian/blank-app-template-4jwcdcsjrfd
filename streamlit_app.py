@@ -19,7 +19,7 @@ def main():
 
     option = st.selectbox(
         "Choose a country: ",
-        countries;
+        countries,
         index = None,
         placeholder = "Select country..",
     )
