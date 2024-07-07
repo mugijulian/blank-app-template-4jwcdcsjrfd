@@ -7,4 +7,4 @@ st.subheader(
 
 option = st.selectbox(
     "Select a country please: ",
-    (https://api.airvisual.com/v2/countries?key={{YOUR_API_KEY}}))
+    (api.airvisual.com/v2/countries?key={{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}}))
