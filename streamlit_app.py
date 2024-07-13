@@ -67,8 +67,8 @@ if category == "By City, State, and Country":
                             aqi_data_url = f"https://api.airvisual.com/v2/city?city={city_selected}&state={state_selected}&country={country_selected}&key={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}"
                             aqi_data_dict = requests.get(aqi_data_url).json()
 
-                                if aqi_data_dict["status"] == "success":
-                                    # TODO: Display the weather and air quality data as shown in the video and description of the assignment
+                            if aqi_data_dict["status"] == "success":
+                                # TODO: Display the weather and air quality data as shown in the video and description of the assignment
                         else:
                             st.warning("No data available for this location.")
 
