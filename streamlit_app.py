@@ -24,7 +24,7 @@ def map_creator(latitude,longitude):
 
 @st.cache_data
 def generate_list_of_countries():
-    countries_url = f"https://api.airvisual.com/v2/countries?key={api_key}"
+    countries_url = f"https://api.airvisual.com/v2/countries?key={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}"
     countries_dict = requests.get(countries_url).json()
     # st.write(countries_dict)
     return countries_dict
