@@ -24,21 +24,21 @@ def map_creator(latitude,longitude):
 
 @st.cache_data
 def generate_list_of_countries():
-    countries_url = f"https://api.airvisual.com/v2/countries?key={api_key}"
+    countries_url = f"https://api.airvisual.com/v2/countries?key={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}"
     countries_dict = requests.get(countries_url).json()
     # st.write(countries_dict)
     return countries_dict
 
 @st.cache_data
 def generate_list_of_states(country_selected):
-    states_url = f"https://api.airvisual.com/v2/states?country={country_selected}&key={api_key}"
+    states_url = f"https://api.airvisual.com/v2/states?country={country_selected}&key={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}"
     states_dict = requests.get(states_url).json()
     # st.write(states_dict)
     return states_dict
 
 @st.cache_data
 def generate_list_of_cities(state_selected,country_selected):
-    cities_url = f"https://api.airvisual.com/v2/cities?state={state_selected}&country={country_selected}&key={api_key}"
+    cities_url = f"https://api.airvisual.com/v2/cities?state={state_selected}&country={country_selected}&key={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}"
     cities_dict = requests.get(cities_url).json()
     # st.write(cities_dict)
     return cities_dict
@@ -64,7 +64,7 @@ if category == "By City, State, and Country":
                     # TODO: Generate the list of cities, and add a select box for the user to choose the city
 
                         if city_selected:
-                            aqi_data_url = f"https://api.airvisual.com/v2/city?city={city_selected}&state={state_selected}&country={country_selected}&key={api_key}"
+                            aqi_data_url = f"https://api.airvisual.com/v2/city?city={city_selected}&state={state_selected}&country={country_selected}&key={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}"
                             aqi_data_dict = requests.get(aqi_data_url).json()
 
                             if aqi_data_dict["status"] == "success":
@@ -80,7 +80,7 @@ if category == "By City, State, and Country":
         st.error("Too many requests. Wait for a few minutes before your next API call.")
 
 elif category == "By Nearest City (IP Address)":
-    url = f"https://api.airvisual.com/v2/nearest_city?key={api_key}"
+    url = f"https://api.airvisual.com/v2/nearest_city?key={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}"
     aqi_data_dict = requests.get(url).json()
 
     if aqi_data_dict["status"] == "success":
@@ -93,7 +93,7 @@ elif category == "By Latitude and Longitude":
     # TODO: Add two text input boxes for the user to enter the latitude and longitude information
 
     if latitude and longitude:
-        url = f"https://api.airvisual.com/v2/nearest_city?lat={latitude}&lon={longitude}&key={api_key}"
+        url = f"https://api.airvisual.com/v2/nearest_city?lat={latitude}&lon={longitude}&key={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}"
         aqi_data_dict = requests.get(url).json()
 
         if aqi_data_dict["status"] == "success":
