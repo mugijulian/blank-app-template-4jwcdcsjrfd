@@ -68,9 +68,11 @@ if category == "By City, State, and Country":
                             aqi_data_dict = requests.get(aqi_data_url).json()
 
                             if aqi_data_dict["status"] == "success":
+                                
                                 # TODO: Display the weather and air quality data as shown in the video and description of the assignment
-                            else:
-                                st.warning("No data available for this location.")
+                                
+                                    else:
+                                        st.warning("No data available for this location.")
 
                     else:
                         st.warning("No stations available, please select another state.")
