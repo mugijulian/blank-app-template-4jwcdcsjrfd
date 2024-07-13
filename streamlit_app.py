@@ -31,7 +31,7 @@ def generate_list_of_countries():
 
 @st.cache_data
 def generate_list_of_states(country_selected):
-    states_url = https://api.airvisual.com/v2/states?country={country_selected}&key={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}
+    states_url = f"https://api.airvisual.com/v2/states?country={country_selected}&key={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}"
     states_dict = requests.get(states_url).json()
     # st.write(states_dict)
     return states_dict
