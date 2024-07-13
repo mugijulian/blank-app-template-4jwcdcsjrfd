@@ -38,7 +38,7 @@ def generate_list_of_states(country_selected):
 
 @st.cache_data
 def generate_list_of_cities(state_selected,country_selected):
-    cities_url = https://api.airvisual.com/v2/cities?state={state_selected}&country={country_selected}&key={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}
+    cities_url = f"https://api.airvisual.com/v2/cities?state={state_selected}&country={country_selected}&key={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}"
     cities_dict = requests.get(cities_url).json()
     # st.write(cities_dict)
     return cities_dict
