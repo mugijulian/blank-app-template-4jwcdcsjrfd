@@ -71,8 +71,8 @@ if category == "By City, State, and Country":
                                 
                                 # TODO: Display the weather and air quality data as shown in the video and description of the assignment
                                 
-                                else:
-                                    st.warning("No data available for this location.")
+                            else:
+                                st.warning("No data available for this location.")
 
                     else:
                         st.warning("No stations available, please select another state.")
