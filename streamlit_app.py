@@ -98,7 +98,7 @@ elif category == "By Latitude and Longitude":
     longitude = st.text_input("Enter longitude")
     
     if latitude and longitude:
-        url = f"https://api.airvisual.com/v2/nearest_city?lat={latitude}&lon={longitude}&key={api_key}"
+        url = f"https://api.airvisual.com/v2/nearest_city?lat={latitude}&lon={longitude}&key={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}"
         aqi_data_dict = requests.get(url).json()
         
         if aqi_data_dict["status"] == "success":
