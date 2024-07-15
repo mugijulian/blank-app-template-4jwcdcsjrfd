@@ -132,5 +132,16 @@ elif category == "By Latitude and Longitude":
         if aqi_data_dict["status"] == "success":
         # TODO: Display the weather and air quality data as shown in the video and description of the assignment
 
+            data = aqi_data_dict["data"]
+            st.subheader("Weather and Air Quality for Provided Coordinates")
+            st.write(f"City: {data['city']}")
+            st.write(f"State: {data['state']}")
+            st.write(f"Country: {data['country']}")
+            st.write(f"Temperature: {data['current']['weather']['tp']} °C")
+            st.write(f"Humidity: {data['current']['weather']['hu']} %")
+            st.write(f"Wind Speed: {data['current']['weather']['ws']} m/s")
+            st.write(f"Air Quality Index: {data['current']['pollution']['aqius']}")
+            map_creator(data['location']['coordinates'][1], data['location']['coordinates'][0])
+
         else:
             st.warning("No data available for this location.")
