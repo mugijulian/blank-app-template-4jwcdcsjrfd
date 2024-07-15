@@ -122,7 +122,9 @@ elif category == "By Nearest City (IP Address)":
 
 elif category == "By Latitude and Longitude":
     # TODO: Add two text input boxes for the user to enter the latitude and longitude information
-
+    latitude = st.text_input("Enter latitude")
+    longitude = st.text_input("Enter longitude")
+    
     if latitude and longitude:
         url = f"https://api.airvisual.com/v2/nearest_city?lat={latitude}&lon={longitude}&key={api_key}"
         aqi_data_dict = requests.get(url).json()
