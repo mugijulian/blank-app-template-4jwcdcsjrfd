@@ -1,6 +1,6 @@
 import streamlit as st
 import requests
-import streamlit_folium
+import streamlit_foliu
 
 
 api_key="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"
