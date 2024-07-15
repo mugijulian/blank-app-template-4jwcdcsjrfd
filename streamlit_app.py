@@ -1,5 +1,6 @@
 import streamlit as st
 import requests
+import time
 
 api_key = "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"
 
@@ -24,22 +25,54 @@ def map_creator(latitude, longitude):
 def generate_list_of_countries():
     countries_url = f"https://api.airvisual.com/v2/countries?key={api_key}"
     countries_dict = requests.get(countries_url).json()
-    # st.write(countries_dict)
+    time.sleep(1)  # Add delay to avoid rate limit
     return countries_dict
 
 @st.cache_data
 def generate_list_of_states(country_selected):
     states_url = f"https://api.airvisual.com/v2/states?country={country_selected}&key={api_key}"
     states_dict = requests.get(states_url).json()
-    # st.write(states_dict)
+    time.sleep(1)  # Add delay to avoid rate limit
     return states_dict
 
 @st.cache_data
 def generate_list_of_cities(state_selected, country_selected):
     cities_url = f"https://api.airvisual.com/v2/cities?state={state_selected}&country={country_selected}&key={api_key}"
     cities_dict = requests.get(cities_url).json()
-    # st.write(cities_dict)
+    time.sleep(1)  # Add delay to avoid rate limit
     return cities_dict
+
+def get_dummy_aqi_data():
+    return {
+        "status": "success",
+        "data": {
+            "city": "San Francisco",
+            "state": "California",
+            "country": "USA",
+            "location": {
+                "coordinates": [-122.4194, 37.7749]
+            },
+            "current": {
+                "weather": {
+                    "tp": 15,
+                    "hu": 72,
+                    "ws": 3.5
+                },
+                "pollution": {
+                    "aqius": 45
+                }
+            }
+        }
+    }
+
+def get_aqi_data(url):
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        st.error(f"Error fetching data: {e}")
+        return get_dummy_aqi_data()
 
 # Include a select box for the options: ["By City, State, and Country","By Nearest City (IP Address)","By Latitude and Longitude"]
 # and save its selected option in a variable called category
@@ -71,7 +104,7 @@ if category == "By City, State, and Country":
                         city_selected = st.selectbox("Select a city", options=cities_list)
                         if city_selected:
                             aqi_data_url = f"https://api.airvisual.com/v2/city?city={city_selected}&state={state_selected}&country={country_selected}&key={api_key}"
-                            aqi_data_dict = requests.get(aqi_data_url).json()
+                            aqi_data_dict = get_aqi_data(aqi_data_url)
 
                             if aqi_data_dict["status"] == "success":
                                 data = aqi_data_dict["data"]
@@ -94,7 +127,7 @@ if category == "By City, State, and Country":
 
 elif category == "By Nearest City (IP Address)":
     url = f"https://api.airvisual.com/v2/nearest_city?key={api_key}"
-    aqi_data_dict = requests.get(url).json()
+    aqi_data_dict = get_aqi_data(url)
 
     if aqi_data_dict["status"] == "success":
         data = aqi_data_dict["data"]
@@ -116,7 +149,7 @@ elif category == "By Latitude and Longitude":
 
     if latitude and longitude:
         url = f"https://api.airvisual.com/v2/nearest_city?lat={latitude}&lon={longitude}&key={api_key}"
-        aqi_data_dict = requests.get(url).json()
+        aqi_data_dict = get_aqi_data(url)
 
         if aqi_data_dict["status"] == "success":
             data = aqi_data_dict["data"]
