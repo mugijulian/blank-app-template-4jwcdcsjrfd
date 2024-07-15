@@ -46,6 +46,10 @@ def generate_list_of_cities(state_selected,country_selected):
 #TODO: Include a select box for the options: ["By City, State, and Country","By Nearest City (IP Address)","By Latitude and Longitude"]
 # and save its selected option in a variable called category
 
+category = st.selectbox(
+    "Select option to get data:",
+    ["By City, State, and Country", "By Nearest City (IP Address)", "By Latitude and Longitude"]
+
 if category == "By City, State, and Country":
     countries_dict=generate_list_of_countries()
     if countries_dict["status"] == "success":
