@@ -1,11 +1,10 @@
 import streamlit as st
 import requests
 
-api_key="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"
+api_key = "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"
 
 st.title("Weather and Air Quality Web App")
 st.header("Streamlit and AirVisual API")
-
 
 @st.cache_data
 def map_creator(latitude, longitude):
@@ -94,7 +93,7 @@ if category == "By City, State, and Country":
         st.error("Too many requests. Wait for a few minutes before your next API call.")
 
 elif category == "By Nearest City (IP Address)":
-    url = f"https://api.airvisual.com/v2/nearest_city?key={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}"
+    url = f"https://api.airvisual.com/v2/nearest_city?key={api_key}"
     aqi_data_dict = requests.get(url).json()
 
     if aqi_data_dict["status"] == "success":
@@ -116,7 +115,7 @@ elif category == "By Latitude and Longitude":
     longitude = st.text_input("Enter longitude")
 
     if latitude and longitude:
-        url = f"https://api.airvisual.com/v2/nearest_city?lat={latitude}&lon={longitude}&key={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}"
+        url = f"https://api.airvisual.com/v2/nearest_city?lat={latitude}&lon={longitude}&key={api_key}"
         aqi_data_dict = requests.get(url).json()
 
         if aqi_data_dict["status"] == "success":
@@ -132,3 +131,4 @@ elif category == "By Latitude and Longitude":
             map_creator(data['location']['coordinates'][1], data['location']['coordinates'][0])
         else:
             st.warning("No data available for this location.")
+
