@@ -2,7 +2,7 @@ import streamlit as st
 import requests
 import time
 
-api_key = "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"
+api_key = "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"
 
 st.title("Weather and Air Quality Web App")
 st.header("Streamlit and AirVisual API")
