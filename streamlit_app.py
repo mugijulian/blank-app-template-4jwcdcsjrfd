@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 
-api_key = "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"
+api_key = "your_api_key_here"  # Replace with your actual API key
 
 st.title("Weather and Air Quality Web App")
 st.header("Streamlit and AirVisual API")
@@ -41,8 +41,6 @@ def generate_list_of_cities(state_selected, country_selected):
     # st.write(cities_dict)
     return cities_dict
 
-# Include a select box for the options: ["By City, State, and Country","By Nearest City (IP Address)","By Latitude and Longitude"]
-# and save its selected option in a variable called category
 category = st.selectbox(
     "Select option to get data:",
     ["By City, State, and Country", "By Nearest City (IP Address)", "By Latitude and Longitude"]
@@ -95,6 +93,9 @@ if category == "By City, State, and Country":
 elif category == "By Nearest City (IP Address)":
     url = f"https://api.airvisual.com/v2/nearest_city?key={api_key}"
     aqi_data_dict = requests.get(url).json()
+    
+    # Debugging output
+    st.write(aqi_data_dict)
 
     if aqi_data_dict["status"] == "success":
         data = aqi_data_dict["data"]
@@ -117,6 +118,9 @@ elif category == "By Latitude and Longitude":
     if latitude and longitude:
         url = f"https://api.airvisual.com/v2/nearest_city?lat={latitude}&lon={longitude}&key={api_key}"
         aqi_data_dict = requests.get(url).json()
+        
+        # Debugging output
+        st.write(aqi_data_dict)
 
         if aqi_data_dict["status"] == "success":
             data = aqi_data_dict["data"]
