@@ -22,21 +22,21 @@ def map_creator(latitude, longitude):
 
 @st.cache_data
 def generate_list_of_countries():
-    countries_url = f"https://api.airvisual.com/v2/countries?key={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}"
+    countries_url = f"https://api.airvisual.com/v2/countries?key={api_key}"
     countries_dict = requests.get(countries_url).json()
     # st.write(countries_dict)
     return countries_dict
 
 @st.cache_data
 def generate_list_of_states(country_selected):
-    states_url = f"https://api.airvisual.com/v2/states?country={country_selected}&key={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}"
+    states_url = f"https://api.airvisual.com/v2/states?country={country_selected}&key={api_key}"
     states_dict = requests.get(states_url).json()
     # st.write(states_dict)
     return states_dict
 
 @st.cache_data
 def generate_list_of_cities(state_selected, country_selected):
-    cities_url = f"https://api.airvisual.com/v2/cities?state={state_selected}&country={country_selected}&key={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}"
+    cities_url = f"https://api.airvisual.com/v2/cities?state={state_selected}&country={country_selected}&key={api_key}"
     cities_dict = requests.get(cities_url).json()
     # st.write(cities_dict)
     return cities_dict
@@ -70,7 +70,7 @@ if category == "By City, State, and Country":
 
                         city_selected = st.selectbox("Select a city", options=cities_list)
                         if city_selected:
-                            aqi_data_url = f"https://api.airvisual.com/v2/city?city={city_selected}&state={state_selected}&country={country_selected}&key={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}"
+                            aqi_data_url = f"https://api.airvisual.com/v2/city?city={city_selected}&state={state_selected}&country={country_selected}&key={api_key}"
                             aqi_data_dict = requests.get(aqi_data_url).json()
 
                             if aqi_data_dict["status"] == "success":
