@@ -1,6 +1,6 @@
 import streamlit as st
 import requests
-pip install git+https://github.com/streamlit/streamlit-folium.git
+import streamlit_folium
 
 
 
