@@ -1,6 +1,5 @@
 import streamlit as st
 import requests
-pip install streamlit_forium
 
 
 api_key="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"
